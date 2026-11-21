@@ -550,6 +550,11 @@ body {
   width: min(72rem, calc(100vw - 1.5rem));
 }
 
+/* CW WS-4 — a blog post's page: one column a reader's eye can hold. */
+.jean-reading {
+  width: min(44rem, 100%);
+}
+
 .jean-gallery-columns,
 .jean-stagger-grid {
   display: grid;
@@ -834,7 +839,15 @@ body {
 .jean-widget .jean-docpages-sheet { display: flex; flex-direction: column; gap: 1.25rem; max-width: 48rem; margin-left: auto; margin-right: auto; }
 .jean-widget[data-jean-size="m"] .jean-docpages-sheet { max-width: 36rem; }
 .jean-widget[data-jean-size="s"] .jean-docpages-sheet { max-width: 24rem; }
-.jean-widget .jean-docpage { margin: 0; border-radius: 0.9rem; overflow: hidden; background: var(--color-image-placeholder, var(--color-surface)); box-shadow: 0 8px 28px rgba(0,0,0,0.10); }
+.jean-widget .jean-docpage, .jean-widget .jean-docpages .jean-carousel-slide { background: #fff; }
+/* Hygiene H53 HY-310 — the strip's track stretches every slide to its tallest page; a page's paper is its own height
+   (a landscape page among portrait ones stood on a white block as tall as the tallest). Centred in the track, which
+   keeps the tallest page's height: the arrows stay where they were, over the middle of every page. */
+.jean-widget .jean-docpages .jean-carousel-slide { align-self: center; }
+/* A page that does not say its size waits on an A4 sheet until its picture arrives (`auto` takes the picture's own
+   shape then), never a sliver that grows when a lazy page loads. */
+.jean-widget .jean-docpages .jean-carousel-image:not([width]) { aspect-ratio: auto 595 / 842; }
+.jean-widget .jean-docpage { margin: 0; border-radius: 0.9rem; overflow: hidden; box-shadow: 0 8px 28px rgba(0,0,0,0.10); }
 .jean-widget .jean-docpage-link { display: block; }
 .jean-widget .jean-docpage-image { display: block; width: 100%; height: auto; }
 .jean-widget .jean-docpages--row .jean-docpages-sheet, .jean-widget .jean-docpages--grid .jean-docpages-sheet { display: grid; gap: 1rem; align-items: start; }
@@ -872,6 +885,9 @@ body {
 .jean-widget .jean-blog-excerpt { margin: 0; font-size: 0.875rem; color: var(--color-muted); line-height: 1.5; }
 .jean-widget .jean-blog-detail summary { cursor: pointer; list-style: none; }
 .jean-widget .jean-blog-link { font-size: 0.875rem; font-weight: 600; color: var(--color-primary); }
+.jean-widget .jean-blog-title a { color: inherit; text-decoration: none; }
+.jean-widget .jean-blog-title a:hover, .jean-widget a.jean-blog-link:hover { text-decoration: underline; }
+.jean-widget a.jean-blog-link { align-self: flex-start; text-decoration: none; }
 .jean-widget .jean-blog-full { margin-top: 0.5rem; font-size: 0.875rem; color: var(--color-text); white-space: pre-wrap; }
 
 /* 8z80 SD-34 — a card that is a door to a page */
