@@ -676,7 +676,7 @@ body {
 .jean-widget[data-jean-aspect="square"] .jean-gallery-image { aspect-ratio: 1 / 1; }
 .jean-widget[data-jean-aspect="portrait"] .jean-gallery-image { aspect-ratio: 3 / 4; }
 .jean-widget[data-jean-aspect="landscape"] .jean-gallery-image { aspect-ratio: 16 / 9; }
-.jean-widget[data-jean-aspect="auto"] .jean-gallery-image { aspect-ratio: auto; height: auto; }
+.jean-widget[data-jean-aspect="auto"] .jean-gallery-image { aspect-ratio: auto var(--jean-photo-ratio); height: auto; }
 .jean-widget .jean-gallery-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 0.75rem; font-size: 0.875rem; color: #fff; background: linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0)); }
 /* 8z44 BS-2 — the people of an organisation. Round photo, initials when there
    is none; the grid takes the section's own column count off the mount, the way
@@ -806,8 +806,11 @@ body {
 .jean-widget .jean-menu-category { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: var(--color-text); margin: 0 0 0.75rem; }
 .jean-widget .jean-menu-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; }
 .jean-widget .jean-menu-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
-.jean-widget .jean-menu-name { font-weight: 600; color: var(--color-text); }
-.jean-widget .jean-menu-price { white-space: nowrap; font-weight: 600; color: var(--color-primary); }
+/* Hygiene H70 HY-392 — the one card's row (8z80 SD-11) on every row: the price takes at most three fifths of its row
+   and wraps inside it, set to the right; the name takes the rest; either breaks a word longer than its share. A long
+   hand-written price on one line made a phone's page 404 px wide of 390. */
+.jean-widget .jean-menu-name { min-width: 0; overflow-wrap: anywhere; font-weight: 600; color: var(--color-text); }
+.jean-widget .jean-menu-price { flex-shrink: 0; max-width: 60%; white-space: normal; text-align: right; overflow-wrap: anywhere; font-weight: 600; color: var(--color-primary); }
 .jean-widget .jean-menu-description { margin: 0.15rem 0 0; font-size: 0.875rem; color: var(--color-muted); }
 /* 8z56 W-5 — a programme, the next event first */
 .jean-widget .jean-events-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
